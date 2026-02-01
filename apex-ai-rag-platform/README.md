@@ -42,6 +42,8 @@
 
 **Apex AI** is a full-stack AI application that demonstrates enterprise-level implementation of modern LLM technologies. The platform combines document intelligence, conversational AI, and SaaS business logic into a cohesive user experience.
 
+https://huggingface.co/spaces/sihabsafin/apex-ai
+
 ### What Makes It Special?
 
 - 🧠 **Advanced RAG Pipeline**: Intelligent document processing with MMR retrieval
@@ -418,19 +420,19 @@ The platform tracks key SaaS metrics:
 - [x] Subscription management
 - [x] Basic analytics
 
-### Phase 2 (Q2 2024)
+### Phase 2 (Q2 2026)
 - [ ] Multi-modal support (PDFs, images)
 - [ ] Team workspaces
 - [ ] Advanced search filters
 - [ ] Export conversations (PDF, JSON)
 
-### Phase 3 (Q3 2024)
+### Phase 3 (Q3 2026)
 - [ ] API access for power users
 - [ ] Custom model fine-tuning
 - [ ] Voice input/output
 - [ ] Mobile app (iOS/Android)
 
-### Phase 4 (Q4 2024)
+### Phase 4 (Q4 2026)
 - [ ] Enterprise SSO
 - [ ] Advanced analytics exports
 - [ ] White-label options
@@ -462,10 +464,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **[Your Name]**
 
-- 💼 LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- 🌐 Portfolio: [Your Website](https://yourwebsite.com)
-- 📧 Email: [your.email@example.com](mailto:your.email@example.com)
-- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
+- 💼 LinkedIn: [Sihabul Islam Safin](https://www.linkedin.com/in/sihabsafin/)
+- 📧 Email: [sihabulislamsafin1@gmail.com](mailto:your.email@example.com)
+- 🐙 GitHub: [@sihabsafin](https://github.com/safin)
 
 ---
 
@@ -492,6 +493,6 @@ Built with amazing open-source tools:
 
 ---
 
-Made with ❤️ and ☕ by [Your Name]
+Made with ❤️ and ☕ by [Sihab Safin]
 
 </div>
