@@ -1,0 +1,26 @@
+altair
+
+
+streamlit>=1.30.0
+firebase-admin>=6.3.0
+requests>=2.31.0
+pandas>=2.1.0
+matplotlib>=3.8.0
+pytz>=2024.1
+
+# LangChain ecosystem
+langchain>=0.1.0
+langchain-groq>=0.1.0
+langchain-huggingface>=0.0.1
+langchain-community>=0.0.20
+langchain-text-splitters>=0.0.1
+
+# Vector store & embeddings
+faiss-cpu>=1.7.4
+sentence-transformers>=2.3.0
+
+# Optional: LangSmith tracing
+langsmith>=0.0.70
+
+# Payment processing
+stripe>=7.0.0
