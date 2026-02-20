@@ -172,19 +172,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ── API Key ────────────────────────────────────────────────────────────────────
-with st.expander("🔑 API Key Setup", expanded=not bool(os.environ.get("GROQ_API_KEY", ""))):
-    groq_key = st.text_input(
-        "Groq API Key",
-        type="password",
-        placeholder="gsk_...",
-        help="Get a free key at console.groq.com/keys",
-        value=os.environ.get("GROQ_API_KEY", ""),
-        label_visibility="collapsed",
-    )
-    if groq_key:
-        os.environ["GROQ_API_KEY"] = groq_key
-        st.success("✓ Key saved for this session", icon=None)
+# ── API Key — from Streamlit Secrets only (never shown in UI) ──────────────────
+try:
+    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+except Exception:
+    pass  # Key must be set in Streamlit Cloud → Settings → Secrets
 
 st.markdown('<hr class="thin-divider">', unsafe_allow_html=True)
 
@@ -254,7 +246,7 @@ with st.expander("⚙️ Customize Agent (optional)"):
 
 st.markdown('<hr class="thin-divider">', unsafe_allow_html=True)
 
-run_btn = st.button("▶  RUN RESEARCH", disabled=not bool(os.environ.get("GROQ_API_KEY", "")))
+run_btn = st.button("▶  RUN RESEARCH")
 
 
 # ── Execution ──────────────────────────────────────────────────────────────────
