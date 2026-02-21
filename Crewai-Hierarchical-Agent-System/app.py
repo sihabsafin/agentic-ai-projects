@@ -16,10 +16,6 @@ for secret_key in ["GEMINI_API_KEY", "GROQ_API_KEY"]:
     except Exception:
         pass
 
-# Both GEMINI_API_KEY and GOOGLE_API_KEY are needed by different parts of the stack
-if os.environ.get("GEMINI_API_KEY"):
-    os.environ["GOOGLE_API_KEY"] = os.environ["GEMINI_API_KEY"]
-
 os.environ.setdefault("OPENAI_API_KEY", "dummy-not-used")
 
 # ── CSS ────────────────────────────────────────────────────────────────────────
@@ -460,14 +456,12 @@ PRESETS = {
 
 PROVIDERS = {
     "Gemini (Recommended)": {
-        "gemini/gemini-1.5-flash-latest": "Gemini 1.5 Flash  ✓ Free tier",
-        "gemini/gemini-1.5-pro-latest":   "Gemini 1.5 Pro  ✓ Free tier",
-        "gemini/gemini-2.0-flash":        "Gemini 2.0 Flash  ✓ Free tier",
+        "gemini/gemini-2.5-flash": "Gemini 2.5 Flash  ✓ Free tier",
+        "gemini/gemini-2.0-flash": "Gemini 2.0 Flash  ✓ Free tier",
     },
     "Groq (Fallback — TPM limits apply)": {
         "groq/llama-3.3-70b-versatile": "LLaMA 3.3 70B",
         "groq/mixtral-8x7b-32768":      "Mixtral 8x7B",
-        "groq/llama-3.1-8b-instant":    "LLaMA 3.1 8B",
     },
 }
 
@@ -636,15 +630,9 @@ if run_btn:
     </div>""", unsafe_allow_html=True)
 
     try:
-        # Configure google-generativeai library (required for Gemini)
+        # CrewAI docs: set GEMINI_API_KEY in env before calling LLM for Gemini models
         if is_gemini:
             os.environ["GEMINI_API_KEY"] = api_key
-            os.environ["GOOGLE_API_KEY"] = api_key
-            try:
-                import google.generativeai as genai
-                genai.configure(api_key=api_key)
-            except ImportError:
-                pass
 
         llm = LLM(
             model=model_id,
