@@ -1,4 +1,4 @@
-# AgentForge — Memory Systems
+# AI-Business-Strategy-Memory-System
 
 AI agents that store knowledge in a vector database, retrieve it by semantic similarity, and ground every strategic recommendation in recalled facts — not LLM hallucinations.
 
