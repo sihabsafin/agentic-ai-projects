@@ -1,9 +1,10 @@
-# AgentForge — Live Data Intelligence
+#AI Business Intelligence — Live Data Intelligence
 
 AI agents that call real external APIs, parse live JSON responses, and generate structured analysis. No mock data. No hardcoded numbers. Every run fetches from the actual internet.
 
 Built as Day 5 of a 15-day CrewAI learning program — the first day agents stopped writing from memory and started acting on the world.
 
+Live Link: https://ai-business-intelligence.streamlit.app/
 ---
 
 ## What This Does
