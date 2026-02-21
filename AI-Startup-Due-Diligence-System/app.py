@@ -910,8 +910,10 @@ st.markdown('<div class="section-label">Intelligence Engine</div>', unsafe_allow
 
 MODELS = {
     "Gemini (Primary)": {
-        "gemini/gemini-2.5-flash-preview-04-17": "Gemini 2.5 Flash",
-        "gemini/gemini-2.0-flash":               "Gemini 2.0 Flash",
+        "gemini/gemini-2.0-flash":       "Gemini 2.0 Flash",
+        "gemini/gemini-2.0-flash-lite":  "Gemini 2.0 Flash Lite",
+        "gemini/gemini-1.5-flash":       "Gemini 1.5 Flash",
+        "gemini/gemini-1.5-pro":         "Gemini 1.5 Pro",
     },
     "Groq (Fallback)": {
         "groq/llama-3.3-70b-versatile": "LLaMA 3.3 70B",
