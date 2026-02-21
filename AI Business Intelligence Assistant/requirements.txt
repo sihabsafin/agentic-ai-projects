@@ -1,5 +1,0 @@
-crewai[google-genai]
-google-generativeai
-litellm
-streamlit
-requests
