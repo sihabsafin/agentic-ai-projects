@@ -454,12 +454,12 @@ PRESETS = {
 }
 
 PROVIDERS = {
-    "Gemini (Recommended — no rate limits)": {
-        "gemini/gemini-2.0-flash":    "Gemini 2.0 Flash",
-        "gemini/gemini-1.5-flash":    "Gemini 1.5 Flash",
-        "gemini/gemini-1.5-pro":      "Gemini 1.5 Pro",
+    "Gemini (Recommended)": {
+        "gemini/gemini-1.5-flash":    "Gemini 1.5 Flash  ✓ Free tier",
+        "gemini/gemini-2.5-flash-preview-04-17": "Gemini 2.5 Flash  ✓ Free tier",
+        "gemini/gemini-1.5-pro":      "Gemini 1.5 Pro  ✓ Free tier",
     },
-    "Groq (Fallback — free tier has TPM limits)": {
+    "Groq (Fallback — TPM limits apply)": {
         "groq/llama-3.3-70b-versatile": "LLaMA 3.3 70B",
         "groq/mixtral-8x7b-32768":      "Mixtral 8x7B",
         "groq/llama-3.1-8b-instant":    "LLaMA 3.1 8B",
@@ -483,7 +483,6 @@ with col3:
         label_visibility="collapsed",
     )
 
-# Provider info strip
 is_gemini = model_id.startswith("gemini/")
 if is_gemini:
     st.markdown("""
@@ -491,8 +490,9 @@ if is_gemini:
     border-radius:5px;padding:0.55rem 1rem;margin:0.5rem 0 0.2rem;
     font-family:'Space Mono',monospace;font-size:0.64rem;color:#6a8faf;line-height:1.6;">
       ✦ <b style="color:#58a6ff">Gemini API:</b>
-      Generous free tier — no per-minute token limits for 4-agent crews.
+      Use <b>Gemini 1.5 Flash</b> or <b>Gemini 2.5 Flash</b> — both have free tier quota (5 RPM / 250K TPM).
       Get your key at <b>aistudio.google.com/apikey</b> → add as <b>GEMINI_API_KEY</b> in Streamlit Secrets.
+      Note: Gemini 2.0 Flash is <b>not available</b> on the free tier (0 RPD quota).
     </div>""", unsafe_allow_html=True)
 else:
     st.markdown("""
@@ -761,18 +761,23 @@ if run_btn:
         render_log(log)
         status_placeholder.empty()
 
-        # Friendly rate limit message
-        if "rate_limit" in err_str.lower() or "ratelimit" in err_str.lower() or "rate limit" in err_str.lower():
+        if "resource_exhausted" in err_str.lower() or "quota" in err_str.lower() or "429" in err_str:
+            st.markdown("""
+            <div class="err-box">
+            ✗ <b>Gemini Quota Exhausted (429)</b><br><br>
+            <b>Most likely cause:</b> You selected <b>Gemini 2.0 Flash</b> which has 0 free-tier quota.<br><br>
+            <b>Fix — switch to a model with actual free quota:</b><br>
+            · <b>Gemini 1.5 Flash</b> — 5 RPM / 250K TPM / 1500 RPD ✓<br>
+            · <b>Gemini 2.5 Flash</b> — 5 RPM / 250K TPM ✓<br>
+            · <b>Gemini 1.5 Pro</b> — 2 RPM / 32K TPM ✓ (slower)<br><br>
+            Select one of the above in the Model dropdown and click Deploy Crew again.
+            </div>""", unsafe_allow_html=True)
+        elif "rate_limit" in err_str.lower() or "ratelimit" in err_str.lower():
             st.markdown("""
             <div class="err-box">
             ✗ <b>Rate Limit Reached</b><br><br>
-            Token-per-minute limit hit on Groq free tier — 4 agents generate a lot of tokens.<br><br>
-            <b>Recommended fix:</b><br>
-            · Switch provider to <b>Gemini</b> — much more generous free tier for multi-agent runs<br>
-            · Get key at <b>aistudio.google.com/apikey</b> → add as <b>GEMINI_API_KEY</b> in Streamlit Secrets<br><br>
-            <b>Or stay on Groq:</b><br>
-            · Wait 30–60 seconds and retry<br>
-            · Use <b>llama-3.3-70b-versatile</b> or <b>mixtral-8x7b-32768</b>
+            Hit requests-per-minute limit. Wait 30–60 seconds and retry.<br>
+            Or switch to <b>Gemini 1.5 Flash</b> which handles multi-agent crews best on free tier.
             </div>""", unsafe_allow_html=True)
         else:
             st.markdown(f'<div class="err-box">✗ Error: {err_str}</div>', unsafe_allow_html=True)
