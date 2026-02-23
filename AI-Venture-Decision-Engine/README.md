@@ -1,4 +1,4 @@
-# Investment Analyzer — Structured AI Output + JSON Validation
+# AI Venture Decision Engine — Structured AI Output + JSON Validation
 
 An AI startup investment analyzer that enforces strict JSON schema on every output, runs a multi-layer validation pipeline, and renders structured scores, decisions, and actions directly from the parsed data. Built as Day 8 of a 15-day CrewAI learning program.
 
