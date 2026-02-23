@@ -2,6 +2,8 @@
 
 A fully modular AI startup investment analyzer where every layer of the system lives in its own file. The UI imports one function. The crew assembly imports from three modules. Tools have no knowledge of agents. Tasks have no knowledge of tools. Built as Day 10 of a 15-day CrewAI learning program.
 
+Live Link: https://ai-startup-investment-analyzer.streamlit.app/
+
 This is the project where the system becomes maintainable.
 
 ---
