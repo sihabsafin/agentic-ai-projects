@@ -8,7 +8,7 @@ import io
 from datetime import datetime
 
 st.set_page_config(
-    page_title="AgentForge · Observability",
+    page_title="Startup Evaluation · Orchestrator",
     page_icon="◈",
     layout="centered",
     initial_sidebar_state="collapsed",
